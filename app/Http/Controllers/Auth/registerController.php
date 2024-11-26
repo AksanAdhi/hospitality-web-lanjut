@@ -18,6 +18,7 @@ class registerController extends Controller
         // validasi form register
         $request->validate([
             'username' => 'required|string|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'profilePicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -33,6 +34,7 @@ class registerController extends Controller
         // membuat user
         User::create([
             'username' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'profilePicture' => $profilePictureName,

@@ -29,9 +29,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Rute Login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+// Route Login
+Route::middleware('redirect.if.authenticated')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+});
+
+
 
 // Rute Register
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
@@ -45,3 +49,18 @@ Route::get('/home', function() {
     // Redirect to the home page or return a view
     return view('home');
 });
+
+// Rute untuk navbar
+Route::get('/admin/home', function () {
+    return view('home', ['title' => 'Home']);
+});
+Route::get('/admin/appointment', function () {
+    return view('appointment', ['title' => 'Janji Temu Dokter']);
+});
+Route::get('/admin/obat', function () {
+    return view('obat', ['title' => 'Manajemen Obat']);
+});
+Route::get('/admin/pasien', function () {
+    return view('pasien', ['title' => 'Pasien']);
+});
+

@@ -9,49 +9,56 @@ use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
-    function __construct(){
-        $this->middleware('guest')->except('logout');
+    function __construct()
+    {
+        $this->middleware('redirect.if.authenticated')->except('logout');
     }
-    
-    function showLoginForm(){
+
+
+    // Menampilkan halaman login
+    function showLoginForm()
+    {
         return view('auth.login');
     }
-    
 
-
-    function login(Request $request){
-
-        // Validasi data
+    // Menangani permintaan login
+    function login(Request $request)
+    {
+        // Validasi form login
         $request->validate([
             'username' => 'required|string|max:255',
             'password' => 'required|min:6'
         ]);
 
-        // mencari user berdasarkan username
+        // Mencari user berdasarkan username
         $user = User::where('username', $request->username)->first();
 
-        // pencocokan password
-        if($user && password_verify($request->password, $user->password)){
+        // Mencocokkan password
+        if ($user && password_verify($request->password, $user->password)) {
             Auth::login($user);
-            return redirect('/home');
+
+            // Mengalihkan berdasarkan role
+            if ($user->level == 'admin') {
+                return redirect()->route('admin.home');  // Ganti dengan route halaman dashboard admin
+            }
+
+            return redirect()->route('doctor.home');  // Ganti dengan route halaman dashboard user
         }
 
         // Jika username atau password salah
         return back()->withErrors([
             'username' => 'Username atau password salah.',
         ]);
-
     }
-    
-    // Logout
+
+    // Fungsi logout
     public function logout(Request $request)
     {
-        Auth::logout(); // Mengeluarkan user dari session
+        Auth::logout();  // Logout user
 
-        $request->session()->invalidate(); // Menghapus semua data session
-        $request->session()->regenerateToken(); // Mencegah CSRF setelah logout
+        $request->session()->invalidate();  // Invalidate data session
+        $request->session()->regenerateToken();  // Cegah CSRF setelah logout
 
-        return redirect('/login'); // Mengarahkan ke halaman login
+        return redirect('/login');  // Redirect ke halaman login setelah logout
     }
-
 }
