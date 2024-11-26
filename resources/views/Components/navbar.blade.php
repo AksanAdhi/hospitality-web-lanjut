@@ -17,10 +17,11 @@
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="/home" class="{{ request()->is('home') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>                            
-                            <a href="/about" class="{{ request()->is('about') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium ">About</a>
-                            <a href="/obat" class="{{ request()->is('obat') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium ">Obat</a>
-                            <a href="/appointment" class="{{ request()->is('appointment') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Appointment</a>
+                            <a href="/admin/home" class="{{ request()->is('/admin/home') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>                            
+                            <a href="/admin/about" class="{{ request()->is('/admin/about') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium ">About</a>
+                            <a href="/admin/inventory" class="{{ request()->is('/admin/obat') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium ">Obat</a>
+                            <a href="/admin/patients" class="{{ request()->is('dokter') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Pasien</a>
+                            <a href="/admin/appointments" class="{{ request()->is('dokter') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Janji Temu</a>
                         </div>
                     </div>
                 </div>
