@@ -18,8 +18,8 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <!-- Link navigasi khusus untuk dokter -->
-                        <a href="/home" class="{{ request()->is('doctor/home') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Home</a>
-                        <a href="{{ route('doctor.appointments.index') }}" class="{{ request()->is('doctor/appointments') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Janji Temu</a>
+                        <a href="/home" class="{{ request()->is('home') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="{{ route('doctor.appointments.index') }}" class="{{ request()->is('appointments') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">Janji Temu</a>
                         <a href="{{ route('doctor.patients.index') }}"
                             class="{{ request()->is('doctor/patients') ? 'bg-white text-gray-800' : 'bg-blue-100 text-gray-800 hover:bg-white hover:text-gray-800' }} rounded-md px-3 py-2 text-sm font-medium">
                             Pasien
@@ -51,7 +51,7 @@
                             x-transition:leave-end="opacity-0 scale-95"
                             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                            <a href="{{route('doctor.profile.edit')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                             <!-- Formulir logout -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -89,9 +89,9 @@
     <div class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-800 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">About</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Contacts</a>
+            <a href="/home" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
+            <a href="{{ route('doctor.appointments.index') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Janji Temu</a>
+            <a href="{{ route('doctor.patients.index') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Pasien</a>
             <!-- <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Reports</a> -->
         </div>
         <div class="border-t border-gray-700 pb-3 pt-4">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class=" mt-3 space-y-1 px-2">
-                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
+                    <a href="{{route('doctor.profile.edit')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
                     <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
                     <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
                 </div>

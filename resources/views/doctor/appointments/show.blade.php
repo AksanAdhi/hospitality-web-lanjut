@@ -11,6 +11,9 @@
             <p><strong>Dokter:</strong> {{ $appointment->doctor->name }}</p>
             <p><strong>Tanggal Janji Temu:</strong> {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d-m-Y') }}</p>
             <p><strong>Waktu:</strong> {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('H:i') }}</p>
+            <p><strong>Riwayat Penyakit:</strong> {{ $appointment->patient->riwayat_penyakit }}</p>
+
+
         </div>
 
         <div class="mb-6">
